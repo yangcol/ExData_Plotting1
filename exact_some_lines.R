@@ -1,0 +1,6 @@
+startTime <- as.Date(strptime("2007-02-01", "%Y-%m-%d"))
+endTime <- as.Date(strptime("2007-02-02", "%Y-%m-%d"))
+ha <- read.csv("household_power_consumption.txt", sep=";")
+ha[,"Date"] <- as.Date(strptime(ha[,"Date"], "%d/%m/%Y")) 
+mydata <- subset(ha, Date >= startTime & Date <= endTime)
+write.csv(mydata, "new_power_consumption.txt")
